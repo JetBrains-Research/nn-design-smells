@@ -133,7 +133,7 @@ class GetRepositories():
             return None
 
 
-access_token = ""
+access_token = "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"
 session = create_github_session()
 names = df.name.to_list()
 
@@ -141,5 +141,6 @@ with open('json/ml_repos_sorted_v1.jsonl', 'a') as f_repos, open('json/ml_issues
     get_ml_repos = GetRepositories(topics, contents, descriptions, f_repos, f_issues)
     
     for i, name in enumerate(names):
-        print(i, end=' ')
-        result = get_ml_repos.check_repo(access_token, session, name)
+        if i > 363:
+            print(i, end=' ')
+            result = get_ml_repos.check_repo(access_token, session, name)
